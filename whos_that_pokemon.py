@@ -23,9 +23,9 @@ class GameState:
         self.guess: str = ''
         self.index: int = -1
         self.game_start: float = time.time()
-        self.adjusted_game_start = 0
+        self.adjusted_game_start: float = 0
         self.randomize_after: bool = True
-        self.specific_mode = False
+        self.specific_mode: bool = False
 
 def guess_pokemon(guess, pokemon_species_name, aliases = [], require_qualifiers = False, qualifiers = []):
     guessed_name = "".join(char for char in guess.lower() if char.isalnum())
@@ -147,21 +147,8 @@ def main():
             if event.type == pygame.KEYDOWN:
                 # typing
                 if event.key == pygame.K_RETURN:
-                    state.guess = ''
-                elif event.key == pygame.K_BACKSPACE:
-                    state.guess = state.guess[:-1]
-                else:
-                    state.guess += event.unicode
-
-                # guess
-                if state.specific_mode and "qualifiers" in pokemon_data[pokemon_name]:
-                    state.pokemon_guessed = guess_pokemon(state.guess, pokemon_species_name, pokemon_aliases, True, pokemon_data[pokemon_name]["qualifiers"])
-                else:
-                    state.pokemon_guessed = guess_pokemon(state.guess, pokemon_species_name, pokemon_aliases)
-
-                #commands
-                if state.guess[:3].upper() == state.guess[:3]:
-                    match state.guess:
+                    #commands
+                    match state.guess.upper():
                         case "POKERAP":
                             print("switching to pokerap mode")
                             state = reset_game(state, pokerap_list, False)
@@ -187,16 +174,27 @@ def main():
                             pygame.quit()
                             sys.exit()
 
-                    if state.guess[:9] == "CONTAINS:" and state.guess[-1] == " ":
-                        print(f"switching to ids containg {state.guess[9:-1].lower()}")
-                        conditions = state.guess[9:-1].split("|")
+                    if state.guess[:9].upper() == "CONTAINS:":
+                        print(f"switching to ids containg {state.guess[9:].lower()}")
+                        conditions = state.guess[9:].split("|")
                         contains_list = [mon for mon in state.pokemon_list if any(cond in mon for cond in conditions)]
                         state.specific_mode = False
                         state = reset_game(state, contains_list, True)
-                    elif state.guess[:6] == "START:" and len(state.guess) == 7:
+                    elif state.guess[:6].upper() == "START:" and len(state.guess) == 7:
                         print(f"switching to ids starting with {state.guess[-1].lower()}")
                         starts_list = [mon for mon in state.pokemon_list if mon[0] == state.guess[-1].lower()]
                         state = reset_game(state, starts_list, True)
+                    state.guess = ''
+                elif event.key == pygame.K_BACKSPACE:
+                    state.guess = state.guess[:-1]
+                else:
+                    state.guess += event.unicode
+
+                # guess
+                if state.specific_mode and "qualifiers" in pokemon_data[pokemon_name]:
+                    state.pokemon_guessed = guess_pokemon(state.guess, pokemon_species_name, pokemon_aliases, True, pokemon_data[pokemon_name]["qualifiers"])
+                else:
+                    state.pokemon_guessed = guess_pokemon(state.guess, pokemon_species_name, pokemon_aliases)
 
         if not state.pokemon_chosen:
             # select the next pokemon
