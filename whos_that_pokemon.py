@@ -27,6 +27,18 @@ class GameState:
         self.randomize_after: bool = True
         self.specific_mode: bool = False
 
+    def reset(self, new_list: list, randomize: bool | None = None) -> None:
+        if randomize is None:
+            randomize = self.randomize_after
+        self.pokemon_list = new_list
+        self.randomize_after = randomize
+        if self.randomize_after:
+            random.shuffle(self.pokemon_list)
+        self.index = -1
+        self.pokemon_chosen = False
+        self.game_start = time.time()
+        self.adjusted_game_start = 0
+
 class Pokemon:
     def __init__(self, pokemon_name, pokemon_data):
         self.data = pokemon_data[pokemon_name]
@@ -38,6 +50,7 @@ class Pokemon:
             self.aliases = []
 
         self.qualifiers = self.data["qualifiers"] if "qualifiers" in self.data else []
+        self.qualifiers = ["".join(char for char in qualifier.lower() if char.isalnum()) for qualifier in self.qualifiers]
 
         # get the image
         self.sprite_address = self.data["image_link"]
@@ -48,26 +61,13 @@ class Pokemon:
             self.img = pygame.transform.scale(self.img, (475, 475))
         self.shadow_img = silhouette(self.img)
 
-def guess_pokemon(guess, pokemon_species_name, aliases = [], require_qualifiers = False, qualifiers = []):
-    guessed_name = "".join(char for char in guess.lower() if char.isalnum())
-    if require_qualifiers:
-        for qualifier in qualifiers:
-            if "".join(char for char in qualifier.lower() if char.isalnum()) not in guessed_name:
-                return False
-    return guessed_name == pokemon_species_name or guessed_name in aliases
-
-def reset_game(state: GameState, new_list: list, randomize: bool | None = None):
-    if randomize is None:
-        randomize = state.randomize_after
-    state.pokemon_list = new_list
-    state.randomize_after = randomize
-    if state.randomize_after:
-        random.shuffle(state.pokemon_list)
-    state.index = -1
-    state.pokemon_chosen = False
-    state.game_start = time.time()
-    state.adjusted_game_start = 0
-    return state
+    def guess(self, guess: str, require_qualifiers: bool = False) -> bool:
+        guessed_name = "".join(char for char in guess.lower() if char.isalnum())
+        if require_qualifiers:
+            for qualifier in self.qualifiers:
+                if qualifier not in guessed_name:
+                    return False
+        return guessed_name == self.species_name or guessed_name in self.aliases
 
 def main():
     pokemon_list = [p['name'] for p in pb.APIResourceList('pokemon')]
@@ -172,10 +172,10 @@ def main():
                     match state.guess.upper():
                         case "POKERAP":
                             print("switching to pokerap mode")
-                            state = reset_game(state, pokerap_list, False)
+                            state.reset(pokerap_list, False)
                         case "RESET":
                             print("resetting game")
-                            state = reset_game(state, full_pokemon_list, True)
+                            state.reset(full_pokemon_list, True)
                         case "SPECIFIC":
                             print("enabling specific mode")
                             state.specific_mode = True
@@ -187,10 +187,10 @@ def main():
                         case "ONLYSPECIFIC":
                             print("Switching to only pokemon affected by specific mode.")
                             # state.specific_mode = True
-                            state = reset_game(state, [mon for mon in state.pokemon_list if "qualifiers" in pokemon_data[mon]])
+                            state.reset([mon for mon in state.pokemon_list if "qualifiers" in pokemon_data[mon]])
                         case "INVERT":
                             print("Inverting pokemon list")
-                            state = reset_game(state, [mon for mon in full_pokemon_list if mon not in state.pokemon_list])
+                            state.reset([mon for mon in full_pokemon_list if mon not in state.pokemon_list])
                         case "QUIT":
                             pygame.quit()
                             sys.exit()
@@ -200,11 +200,11 @@ def main():
                         conditions = state.guess[9:].split("|")
                         contains_list = [mon for mon in state.pokemon_list if any(cond in mon for cond in conditions)]
                         state.specific_mode = False
-                        state = reset_game(state, contains_list, True)
+                        state.reset(contains_list, True)
                     elif state.guess[:6].upper() == "START:" and len(state.guess) == 7:
                         print(f"switching to ids starting with {state.guess[-1].lower()}")
                         starts_list = [mon for mon in state.pokemon_list if mon[0] == state.guess[-1].lower()]
-                        state = reset_game(state, starts_list, True)
+                        state.reset(starts_list, True)
                     state.guess = ''
                 elif event.key == pygame.K_BACKSPACE:
                     state.guess = state.guess[:-1]
@@ -212,12 +212,12 @@ def main():
                     state.guess += event.unicode
 
                 # guess
-                state.pokemon_guessed = guess_pokemon(state.guess, pokemon.species_name, pokemon.aliases, state.specific_mode, pokemon.qualifiers)
+                state.pokemon_guessed = pokemon.guess(state.guess, state.specific_mode)
 
         if not state.pokemon_chosen:
             # select the next pokemon
             if len(state.pokemon_list) <= 0:
-                state = reset_game(state, full_pokemon_list, True)
+                state.reset(full_pokemon_list, True)
             state.index += 1
             if state.index >= len(state.pokemon_list):
                 if state.randomize_after:
