@@ -160,7 +160,8 @@ def main():
     state: GameState = GameState(full_pokemon_list)
     load_start_time = 0
 
-    while True:   # Game Loop
+    # Game Loop
+    while True:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
@@ -211,7 +212,6 @@ def main():
                 else:
                     state.guess += event.unicode
 
-                # guess
                 state.pokemon_guessed = pokemon.guess(state.guess, state.specific_mode)
 
         if not state.pokemon_chosen:
@@ -227,10 +227,8 @@ def main():
                 state.game_start = time.time()
                 state.adjusted_game_start = 0
 
-            # get the pokemon's data
-            pokemon = Pokemon(state.pokemon_list[state.index], pokemon_data)            
-
             # update variables
+            pokemon = Pokemon(state.pokemon_list[state.index], pokemon_data)            
             state.pokemon_chosen = True
             state.pokemon_guessed = False
             state.guess = ''
