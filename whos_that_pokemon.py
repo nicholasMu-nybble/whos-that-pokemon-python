@@ -27,6 +27,27 @@ class GameState:
         self.randomize_after: bool = True
         self.specific_mode: bool = False
 
+class Pokemon:
+    def __init__(self, pokemon_name, pokemon_data):
+        self.data = pokemon_data[pokemon_name]
+        self.id = pokemon_name
+        self.species_name = "".join(char for char in self.data["species_name"] if char.isalnum())
+        if "aliases" in self.data:
+            self.aliases = ["".join(char for char in alias.lower() if char.isalnum()) for alias in (self.data["aliases"] + [self.id])]
+        else:
+            self.aliases = []
+
+        self.qualifiers = self.data["qualifiers"] if "qualifiers" in self.data else []
+
+        # get the image
+        self.sprite_address = self.data["image_link"]
+        self.response = requests.get(self.sprite_address)
+        self.pil_image = Image.open(BytesIO(self.response.content)).convert("RGBA")
+        self.img = pygame.image.frombytes(self.pil_image.tobytes(), self.pil_image.size, self.pil_image.mode)
+        if self.img.get_size() != (475, 475):
+            self.img = pygame.transform.scale(self.img, (475, 475))
+        self.shadow_img = silhouette(self.img)
+
 def guess_pokemon(guess, pokemon_species_name, aliases = [], require_qualifiers = False, qualifiers = []):
     guessed_name = "".join(char for char in guess.lower() if char.isalnum())
     if require_qualifiers:
@@ -191,10 +212,7 @@ def main():
                     state.guess += event.unicode
 
                 # guess
-                if state.specific_mode and "qualifiers" in pokemon_data[pokemon_name]:
-                    state.pokemon_guessed = guess_pokemon(state.guess, pokemon_species_name, pokemon_aliases, True, pokemon_data[pokemon_name]["qualifiers"])
-                else:
-                    state.pokemon_guessed = guess_pokemon(state.guess, pokemon_species_name, pokemon_aliases)
+                state.pokemon_guessed = guess_pokemon(state.guess, pokemon.species_name, pokemon.aliases, state.specific_mode, pokemon.qualifiers)
 
         if not state.pokemon_chosen:
             # select the next pokemon
@@ -208,24 +226,9 @@ def main():
                 print(f"Finished in RTA: {time.time() - state.game_start:.2f} / IGT: {now - state.game_start:.2f} seconds")
                 state.game_start = time.time()
                 state.adjusted_game_start = 0
-            pokemon_name = state.pokemon_list[state.index]
 
             # get the pokemon's data
-            pokemon = pokemon_data[pokemon_name]
-            pokemon_species_name = "".join(char for char in pokemon["species_name"] if char.isalnum())
-            if "aliases" in pokemon:
-                pokemon_aliases = ["".join(char for char in alias.lower() if char.isalnum()) for alias in (pokemon["aliases"] + [pokemon_name])]
-            else:
-                pokemon_aliases = []
-
-            # get the image
-            sprite_address = pokemon["image_link"]
-            response = requests.get(sprite_address)
-            pil_image = Image.open(BytesIO(response.content)).convert("RGBA")
-            img = pygame.image.frombytes(pil_image.tobytes(), pil_image.size, pil_image.mode)
-            if img.get_size() != (475, 475):
-                img = pygame.transform.scale(img, (475, 475))
-            shadow_img = silhouette(img)
+            pokemon = Pokemon(state.pokemon_list[state.index], pokemon_data)            
 
             # update variables
             state.pokemon_chosen = True
@@ -244,10 +247,10 @@ def main():
         
         screen.fill(bg_color)
         if not state.pokemon_guessed:
-            screen.blit(shadow_img, (0, 0))
+            screen.blit(pokemon.shadow_img, (0, 0))
         else:
             state.pokemon_chosen = False
-            screen.blit(img, (0, 0))
+            screen.blit(pokemon.img, (0, 0))
             load_start_time = time.time()
         screen.blit(guess_surface, (5, 480))
         screen.blit(guess_num_surface, (5, 510))
