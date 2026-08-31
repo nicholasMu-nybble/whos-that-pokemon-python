@@ -159,6 +159,7 @@ def main():
 
     state: GameState = GameState(full_pokemon_list)
     load_start_time = 0
+    backspace_held_for = 0
 
     # Game Loop
     while True:
@@ -207,23 +208,30 @@ def main():
                         starts_list = [mon for mon in state.pokemon_list if mon[0] == state.guess[-1].lower()]
                         state.reset(starts_list, True)
                     state.guess = ''
-                elif event.key == pygame.K_BACKSPACE:
-                    keys_down = pygame.key.get_pressed()
-                    if keys_down[pygame.K_LCTRL] or keys_down[pygame.K_RCTRL]:
-                        last_index = 0
-                        for index, letter in reversed(list(enumerate(state.guess))):
-                            if not letter.isalnum():
-                                last_index = index
-                                break
-                        state.guess = state.guess[:last_index + 1]
-                    elif keys_down[pygame.K_LALT] or keys_down[pygame.K_RALT]:
-                        state.guess = ""
-                    else:
-                        state.guess = state.guess[:-1]
-                else:
+                elif event.key != pygame.K_BACKSPACE:
                     state.guess += event.unicode
 
                 state.pokemon_guessed = pokemon.guess(state.guess, state.specific_mode)
+
+        keys_down = pygame.key.get_pressed()
+        if keys_down[pygame.K_BACKSPACE]:
+            if (backspace_held_for == 0 or backspace_held_for >= 15):
+                if keys_down[pygame.K_LCTRL] or keys_down[pygame.K_RCTRL]:
+                    last_index = 0
+                    for index, letter in reversed(list(enumerate(state.guess))):
+                        if index == len(state.guess) - 1:
+                            continue
+                        if not letter.isalnum():
+                            last_index = index
+                            break
+                    state.guess = state.guess[:last_index + (1 if last_index != 0 else 0)]
+                elif keys_down[pygame.K_LALT] or keys_down[pygame.K_RALT]:
+                    state.guess = ""
+                else:
+                    state.guess = state.guess[:-1]
+            backspace_held_for += 1
+        else:
+            backspace_held_for = 0
 
         if not state.pokemon_chosen:
             # select the next pokemon
