@@ -5110,7 +5110,7 @@
         "aliases": [
             "alolan rattata"
         ],
-        "qualifiers": ["alolan"]
+        "qualifiers": ["alola"]
     },
     "raticate-alola": {
         "species_name": "raticate",
@@ -5118,7 +5118,7 @@
         "aliases": [
             "alolan raticate"
         ],
-        "qualifiers": ["alolan"]
+        "qualifiers": ["alola"]
     },
     "raticate-totem-alola": {
         "species_name": "raticate",
@@ -5233,7 +5233,7 @@
         "aliases": [
             "alolan raichu"
         ],
-        "qualifiers": ["alolan"]
+        "qualifiers": ["alola"]
     },
     "sandshrew-alola": {
         "species_name": "sandshrew",
@@ -5241,7 +5241,7 @@
         "aliases": [
             "alolan sandshrew"
         ],
-        "qualifiers": ["alolan"]
+        "qualifiers": ["alola"]
     },
     "sandslash-alola": {
         "species_name": "sandslash",
@@ -5249,7 +5249,7 @@
         "aliases": [
             "alolan sandslash"
         ],
-        "qualifiers": ["alolan"]
+        "qualifiers": ["alola"]
     },
     "vulpix-alola": {
         "species_name": "vulpix",
@@ -5257,7 +5257,7 @@
         "aliases": [
             "alolan vulpix"
         ],
-        "qualifiers": ["alolan"]
+        "qualifiers": ["alola"]
     },
     "ninetales-alola": {
         "species_name": "ninetales",
@@ -5265,7 +5265,7 @@
         "aliases": [
             "alolan ninetales"
         ],
-        "qualifiers": ["alolan"]
+        "qualifiers": ["alola"]
     },
     "diglett-alola": {
         "species_name": "diglett",
@@ -5273,7 +5273,7 @@
         "aliases": [
             "alolan diglett"
         ],
-        "qualifiers": ["alolan"]
+        "qualifiers": ["alola"]
     },
     "dugtrio-alola": {
         "species_name": "dugtrio",
@@ -5281,7 +5281,7 @@
         "aliases": [
             "alolan dugtrio"
         ],
-        "qualifiers": ["alolan"]
+        "qualifiers": ["alola"]
     },
     "meowth-alola": {
         "species_name": "meowth",
@@ -5289,7 +5289,7 @@
         "aliases": [
             "alolan meowth"
         ],
-        "qualifiers": ["alolan"]
+        "qualifiers": ["alola"]
     },
     "persian-alola": {
         "species_name": "persian",
@@ -5297,7 +5297,7 @@
         "aliases": [
             "alolan persian"
         ],
-        "qualifiers": ["alolan"]
+        "qualifiers": ["alola"]
     },
     "geodude-alola": {
         "species_name": "geodude",
@@ -5305,7 +5305,7 @@
         "aliases": [
             "alolan geodude"
         ],
-        "qualifiers": ["alolan"]
+        "qualifiers": ["alola"]
     },
     "graveler-alola": {
         "species_name": "graveler",
@@ -5313,7 +5313,7 @@
         "aliases": [
             "alolan graveler"
         ],
-        "qualifiers": ["alolan"]
+        "qualifiers": ["alola"]
     },
     "golem-alola": {
         "species_name": "golem",
@@ -5321,7 +5321,7 @@
         "aliases": [
             "alolan golem"
         ],
-        "qualifiers": ["alolan"]
+        "qualifiers": ["alola"]
     },
     "grimer-alola": {
         "species_name": "grimer",
@@ -5329,7 +5329,7 @@
         "aliases": [
             "alolan grimer"
         ],
-        "qualifiers": ["alolan"]
+        "qualifiers": ["alola"]
     },
     "muk-alola": {
         "species_name": "muk",
@@ -5337,7 +5337,7 @@
         "aliases": [
             "alolan muk"
         ],
-        "qualifiers": ["alolan"]
+        "qualifiers": ["alola"]
     },
     "exeggutor-alola": {
         "species_name": "exeggutor",
@@ -5345,7 +5345,7 @@
         "aliases": [
             "alolan exeggutor"
         ],
-        "qualifiers": ["alolan"]
+        "qualifiers": ["alola"]
     },
     "marowak-alola": {
         "species_name": "marowak",
@@ -5353,7 +5353,7 @@
         "aliases": [
             "alolan marowak"
         ],
-        "qualifiers": ["alolan"]
+        "qualifiers": ["alola"]
     },
     "greninja-battle-bond": {
         "species_name": "greninja",
@@ -5669,9 +5669,11 @@
         "species_name": "meowth",
         "image_link": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10161.png",
         "aliases": [
-            "galarian meowth"
+            "galarian meowth",
+            "meowth galar form",
+            "meowth galarian form"
         ],
-        "qualifiers": ["galarian"]
+        "qualifiers": ["galar"]
     },
     "ponyta-galar": {
         "species_name": "ponyta",
@@ -5679,7 +5681,7 @@
         "aliases": [
             "galarian ponyta"
         ],
-        "qualifiers": ["galarian"]
+        "qualifiers": ["galar"]
     },
     "rapidash-galar": {
         "species_name": "rapidash",
@@ -5687,7 +5689,7 @@
         "aliases": [
             "galarian rapidash"
         ],
-        "qualifiers": ["galarian"]
+        "qualifiers": ["galar"]
     },
     "slowpoke-galar": {
         "species_name": "slowpoke",
@@ -5695,7 +5697,7 @@
         "aliases": [
             "galarian slowpoke"
         ],
-        "qualifiers": ["galarian"]
+        "qualifiers": ["galar"]
     },
     "slowbro-galar": {
         "species_name": "slowbro",
@@ -5703,7 +5705,7 @@
         "aliases": [
             "galarian slowbro"
         ],
-        "qualifiers": ["galarian"]
+        "qualifiers": ["galar"]
     },
     "farfetchd-galar": {
         "species_name": "farfetchd",
@@ -5711,7 +5713,7 @@
         "aliases": [
             "galarian farfetch'd"
         ],
-        "qualifiers": ["galarian"]
+        "qualifiers": ["galar"]
     },
     "weezing-galar": {
         "species_name": "weezing",
@@ -5719,7 +5721,7 @@
         "aliases": [
             "galarian weezing"
         ],
-        "qualifiers": ["galarian"]
+        "qualifiers": ["galar"]
     },
     "mr-mime-galar": {
         "species_name": "mr-mime",
@@ -5727,7 +5729,7 @@
         "aliases": [
             "galarian mr. mime"
         ],
-        "qualifiers": ["galarian"]
+        "qualifiers": ["galar"]
     },
     "articuno-galar": {
         "species_name": "articuno",
@@ -5735,7 +5737,7 @@
         "aliases": [
             "galarian articuno"
         ],
-        "qualifiers": ["galarian"]
+        "qualifiers": ["galar"]
     },
     "zapdos-galar": {
         "species_name": "zapdos",
@@ -5743,7 +5745,7 @@
         "aliases": [
             "galarian zapdos"
         ],
-        "qualifiers": ["galarian"]
+        "qualifiers": ["galar"]
     },
     "moltres-galar": {
         "species_name": "moltres",
@@ -5751,7 +5753,7 @@
         "aliases": [
             "galarian moltres"
         ],
-        "qualifiers": ["galarian"]
+        "qualifiers": ["galar"]
     },
     "slowking-galar": {
         "species_name": "slowking",
@@ -5759,7 +5761,7 @@
         "aliases": [
             "galarian slowking"
         ],
-        "qualifiers": ["galarian"]
+        "qualifiers": ["galar"]
     },
     "corsola-galar": {
         "species_name": "corsola",
@@ -5767,7 +5769,7 @@
         "aliases": [
             "galarian corsola"
         ],
-        "qualifiers": ["galarian"]
+        "qualifiers": ["galar"]
     },
     "zigzagoon-galar": {
         "species_name": "zigzagoon",
@@ -5775,7 +5777,7 @@
         "aliases": [
             "galarian zigzagoon"
         ],
-        "qualifiers": ["galarian"]
+        "qualifiers": ["galar"]
     },
     "linoone-galar": {
         "species_name": "linoone",
@@ -5783,7 +5785,7 @@
         "aliases": [
             "galarian linoone"
         ],
-        "qualifiers": ["galarian"]
+        "qualifiers": ["galar"]
     },
     "darumaka-galar": {
         "species_name": "darumaka",
@@ -5791,7 +5793,7 @@
         "aliases": [
             "galarian darumaka"
         ],
-        "qualifiers": ["galarian"]
+        "qualifiers": ["galar"]
     },
     "darmanitan-galar-standard": {
         "species_name": "darmanitan",
@@ -5803,9 +5805,14 @@
             "standard galarian darmanitan",
             "standard mode galarian darmanitan",
             "galarian standard darmanitan",
-            "galarian standard mode darmanitan"
+            "galarian standard mode darmanitan",
+            "standard mode darmanitan galarian form",
+            "darmanitan galarian form",
+            "darmanitan galarian form standard mode",
+            "darmanitan standard mode galarian form",
+            "darmanitan standard galar"
         ],
-        "qualifiers": ["galarian", "standard mode"]
+        "qualifiers": ["galar", "standard mode"]
     },
     "darmanitan-galar-zen": {
         "species_name": "darmanitan",
@@ -5817,9 +5824,14 @@
             "zen galarian darmanitan",
             "zen mode galarian darmanitan",
             "galarian zen darmanitan",
-            "galarian zen mode darmanitan"
+            "galarian zen mode darmanitan",
+            "zen mode darmanitan galarian form",
+            "darmanitan galarian form",
+            "darmanitan galarian form zen mode",
+            "darmanitan zen mode galarian form",
+            "darmanitan zen galar"
         ],
-        "qualifiers": ["galarian", "zen mode"]
+        "qualifiers": ["galar", "zen mode"]
     },
     "yamask-galar": {
         "species_name": "yamask",
@@ -5827,7 +5839,7 @@
         "aliases": [
             "galarian yamask"
         ],
-        "qualifiers": ["galarian"]
+        "qualifiers": ["galar"]
     },
     "stunfisk-galar": {
         "species_name": "stunfisk",
@@ -5835,7 +5847,7 @@
         "aliases": [
             "galarian stunfisk"
         ],
-        "qualifiers": ["galarian"]
+        "qualifiers": ["galar"]
     },
     "zygarde-10": {
         "species_name": "zygarde",
@@ -6277,7 +6289,7 @@
         "aliases": [
             "hisuian growlithe"
         ],
-        "qualifiers": ["hisuian"]
+        "qualifiers": ["hisui"]
     },
     "arcanine-hisui": {
         "species_name": "arcanine",
@@ -6285,7 +6297,7 @@
         "aliases": [
             "hisuian arcanine"
         ],
-        "qualifiers": ["hisuian"]
+        "qualifiers": ["hisui"]
     },
     "voltorb-hisui": {
         "species_name": "voltorb",
@@ -6293,7 +6305,7 @@
         "aliases": [
             "hisuian voltorb"
         ],
-        "qualifiers": ["hisuian"]
+        "qualifiers": ["hisui"]
     },
     "electrode-hisui": {
         "species_name": "electrode",
@@ -6301,7 +6313,7 @@
         "aliases": [
             "hisuian electrode"
         ],
-        "qualifiers": ["hisuian"]
+        "qualifiers": ["hisui"]
     },
     "typhlosion-hisui": {
         "species_name": "typhlosion",
@@ -6309,7 +6321,7 @@
         "aliases": [
             "hisuian typhlosion"
         ],
-        "qualifiers": ["hisuian"]
+        "qualifiers": ["hisui"]
     },
     "qwilfish-hisui": {
         "species_name": "qwilfish",
@@ -6317,7 +6329,7 @@
         "aliases": [
             "hisuian qwilfish"
         ],
-        "qualifiers": ["hisuian"]
+        "qualifiers": ["hisui"]
     },
     "sneasel-hisui": {
         "species_name": "sneasel",
@@ -6325,7 +6337,7 @@
         "aliases": [
             "hisuian sneasel"
         ],
-        "qualifiers": ["hisuian"]
+        "qualifiers": ["hisui"]
     },
     "samurott-hisui": {
         "species_name": "samurott",
@@ -6333,7 +6345,7 @@
         "aliases": [
             "hisuian samurott"
         ],
-        "qualifiers": ["hisuian"]
+        "qualifiers": ["hisui"]
     },
     "lilligant-hisui": {
         "species_name": "lilligant",
@@ -6341,7 +6353,7 @@
         "aliases": [
             "hisuian lilligant"
         ],
-        "qualifiers": ["hisuian"]
+        "qualifiers": ["hisui"]
     },
     "zorua-hisui": {
         "species_name": "zorua",
@@ -6349,7 +6361,7 @@
         "aliases": [
             "hisuian zorua"
         ],
-        "qualifiers": ["hisuian"]
+        "qualifiers": ["hisui"]
     },
     "zoroark-hisui": {
         "species_name": "zoroark",
@@ -6357,7 +6369,7 @@
         "aliases": [
             "hisuian zoroark"
         ],
-        "qualifiers": ["hisuian"]
+        "qualifiers": ["hisui"]
     },
     "braviary-hisui": {
         "species_name": "braviary",
@@ -6365,7 +6377,7 @@
         "aliases": [
             "hisuian braviary"
         ],
-        "qualifiers": ["hisuian"]
+        "qualifiers": ["hisui"]
     },
     "sliggoo-hisui": {
         "species_name": "sliggoo",
@@ -6373,7 +6385,7 @@
         "aliases": [
             "hisuian sliggoo"
         ],
-        "qualifiers": ["hisuian"]
+        "qualifiers": ["hisui"]
     },
     "goodra-hisui": {
         "species_name": "goodra",
@@ -6381,7 +6393,7 @@
         "aliases": [
             "hisuian goodra"
         ],
-        "qualifiers": ["hisuian"]
+        "qualifiers": ["hisui"]
     },
     "avalugg-hisui": {
         "species_name": "avalugg",
@@ -6389,7 +6401,7 @@
         "aliases": [
             "hisuian avalugg"
         ],
-        "qualifiers": ["hisuian"]
+        "qualifiers": ["hisui"]
     },
     "decidueye-hisui": {
         "species_name": "decidueye",
@@ -6397,7 +6409,7 @@
         "aliases": [
             "hisuian decidueye"
         ],
-        "qualifiers": ["hisuian"]
+        "qualifiers": ["hisui"]
     },
     "dialga-origin": {
         "species_name": "dialga",
@@ -6424,7 +6436,10 @@
         "image_link": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10247.png",
         "aliases": [
             "white basculin",
-            "white striped basculin"
+            "white striped basculin",
+            "hisuian basculin",
+            "bascuilin hisuian form",
+            "basculin hisui"
         ],
         "qualifiers": ["white striped"]
     },
@@ -6456,7 +6471,13 @@
             "paldean tauros combat breed",
             "combat breed paldean tauros",
             "paldean combat tauros",
-            "paldean combat breed tauros"
+            "paldean combat breed tauros",
+            "tauros paldean form",
+            "tauros paldean form combat",
+            "tauros paldean form combat breed",
+            "tauros combat paldean form",
+            "tauros combat breed paldean form",
+            "tauros combat breed paldea"
         ],
         "qualifiers": ["paldean", "combat breed"]
     },
@@ -6470,7 +6491,13 @@
             "paldean tauros blaze breed",
             "blaze breed paldean tauros",
             "paldean blaze tauros",
-            "paldean blaze breed tauros"
+            "paldean blaze breed tauros",
+            "tauros paldean form",
+            "tauros paldean form blaze",
+            "tauros paldean form blaze breed",
+            "tauros blaze paldean form",
+            "tauros blaze breed paldean form",
+            "tauros blaze breed paldea"
         ],
         "qualifiers": ["paldean", "blaze breed"]
     },
@@ -6484,7 +6511,13 @@
             "paldean tauros aqua breed",
             "aqua breed paldean tauros",
             "paldean aqua tauros",
-            "paldean aqua breed tauros"
+            "paldean aqua breed tauros",
+            "tauros paldean form",
+            "tauros paldean form aqua",
+            "tauros paldean form aqua breed",
+            "tauros aqua paldean form",
+            "tauros aqua breed paldean form",
+            "tauros aqua breed paldea"
         ],
         "qualifiers": ["paldean", "aqua breed"]
     },
