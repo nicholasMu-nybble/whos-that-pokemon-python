@@ -208,7 +208,18 @@ def main():
                         state.reset(starts_list, True)
                     state.guess = ''
                 elif event.key == pygame.K_BACKSPACE:
-                    state.guess = state.guess[:-1]
+                    keys_down = pygame.key.get_pressed()
+                    if keys_down[pygame.K_LCTRL] or keys_down[pygame.K_RCTRL]:
+                        last_index = 0
+                        for index, letter in reversed(list(enumerate(state.guess))):
+                            if not letter.isalnum():
+                                last_index = index
+                                break
+                        state.guess = state.guess[:last_index + 1]
+                    elif keys_down[pygame.K_LALT] or keys_down[pygame.K_RALT]:
+                        state.guess = ""
+                    else:
+                        state.guess = state.guess[:-1]
                 else:
                     state.guess += event.unicode
 
