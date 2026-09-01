@@ -3733,7 +3733,8 @@
         "species_name": "zacian",
         "image_link": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/888.png",
         "aliases": [
-            "hero of many battles zacian"
+            "hero of many battles zacian",
+            "zacian hero of many battles"
         ],
         "qualifiers": ["hero of many battles"]
     },
@@ -3741,7 +3742,8 @@
         "species_name": "zamazenta",
         "image_link": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/889.png",
         "aliases": [
-            "hero of many battles zamazenta"
+            "hero of many battles zamazenta",
+            "zamazenta hero of many battles"
         ],
         "qualifiers": ["hero of many battles"]
     },
@@ -5980,7 +5982,7 @@
             "gigantamax venusaur",
             "g-max venusaur"
         ],
-        "qualifiers": ["gigantamax"]
+        "qualifiers": ["g", "max"]
     },
     "charizard-gmax": {
         "species_name": "charizard",
@@ -5989,7 +5991,7 @@
             "gigantamax charizard",
             "g-max charizard"
         ],
-        "qualifiers": ["gigantamax"]
+        "qualifiers": ["g", "max"]
     },
     "blastoise-gmax": {
         "species_name": "blastoise",
@@ -5998,7 +6000,7 @@
             "gigantamax blastoise",
             "g-max blastoise"
         ],
-        "qualifiers": ["gigantamax"]
+        "qualifiers": ["g", "max"]
     },
     "butterfree-gmax": {
         "species_name": "butterfree",
@@ -6007,7 +6009,7 @@
             "gigantamax butterfree",
             "g-max butterfree"
         ],
-        "qualifiers": ["gigantamax"]
+        "qualifiers": ["g", "max"]
     },
     "pikachu-gmax": {
         "species_name": "pikachu",
@@ -6016,7 +6018,7 @@
             "gigantamax pikachu",
             "g-max pikachu"
         ],
-        "qualifiers": ["gigantamax"]
+        "qualifiers": ["g", "max"]
     },
     "meowth-gmax": {
         "species_name": "meowth",
@@ -6025,7 +6027,7 @@
             "gigantamax meowth",
             "g-max meowth"
         ],
-        "qualifiers": ["gigantamax"]
+        "qualifiers": ["g", "max"]
     },
     "machamp-gmax": {
         "species_name": "machamp",
@@ -6034,7 +6036,7 @@
             "gigantamax machamp",
             "g-max machamp"
         ],
-        "qualifiers": ["gigantamax"]
+        "qualifiers": ["g", "max"]
     },
     "gengar-gmax": {
         "species_name": "gengar",
@@ -6043,7 +6045,7 @@
             "gigantamax gengar",
             "g-max gengar"
         ],
-        "qualifiers": ["gigantamax"]
+        "qualifiers": ["g", "max"]
     },
     "kingler-gmax": {
         "species_name": "kingler",
@@ -6052,7 +6054,7 @@
             "gigantamax kingler",
             "g-max kingler"
         ],
-        "qualifiers": ["gigantamax"]
+        "qualifiers": ["g", "max"]
     },
     "lapras-gmax": {
         "species_name": "lapras",
@@ -6061,7 +6063,7 @@
             "gigantamax lapras",
             "g-max lapras"
         ],
-        "qualifiers": ["gigantamax"]
+        "qualifiers": ["g", "max"]
     },
     "eevee-gmax": {
         "species_name": "eevee",
@@ -6070,7 +6072,7 @@
             "gigantamax eevee",
             "g-max eevee"
         ],
-        "qualifiers": ["gigantamax"]
+        "qualifiers": ["g", "max"]
     },
     "snorlax-gmax": {
         "species_name": "snorlax",
@@ -6079,7 +6081,7 @@
             "gigantamax snorlax",
             "g-max snorlax"
         ],
-        "qualifiers": ["gigantamax"]
+        "qualifiers": ["g", "max"]
     },
     "garbodor-gmax": {
         "species_name": "garbodor",
@@ -6088,7 +6090,7 @@
             "gigantamax garbodor",
             "g-max garbodor"
         ],
-        "qualifiers": ["gigantamax"]
+        "qualifiers": ["g", "max"]
     },
     "melmetal-gmax": {
         "species_name": "melmetal",
@@ -6097,7 +6099,7 @@
             "gigantamax melmetal",
             "g-max melmetal"
         ],
-        "qualifiers": ["gigantamax"]
+        "qualifiers": ["g", "max"]
     },
     "rillaboom-gmax": {
         "species_name": "rillaboom",
@@ -6106,7 +6108,7 @@
             "gigantamax rillaboom",
             "g-max rillaboom"
         ],
-        "qualifiers": ["gigantamax"]
+        "qualifiers": ["g", "max"]
     },
     "cinderace-gmax": {
         "species_name": "cinderace",
@@ -6115,7 +6117,7 @@
             "gigantamax cinderace",
             "g-max cinderace"
         ],
-        "qualifiers": ["gigantamax"]
+        "qualifiers": ["g", "max"]
     },
     "inteleon-gmax": {
         "species_name": "inteleon",
@@ -6124,7 +6126,7 @@
             "gigantamax inteleon",
             "g-max inteleon"
         ],
-        "qualifiers": ["gigantamax"]
+        "qualifiers": ["g", "max"]
     },
     "corviknight-gmax": {
         "species_name": "corviknight",
@@ -6133,7 +6135,7 @@
             "gigantamax corviknight",
             "g-max corviknight"
         ],
-        "qualifiers": ["gigantamax"]
+        "qualifiers": ["g", "max"]
     },
     "orbeetle-gmax": {
         "species_name": "orbeetle",
@@ -6142,7 +6144,7 @@
             "gigantamax orbeetle",
             "g-max orbeetle"
         ],
-        "qualifiers": ["gigantamax"]
+        "qualifiers": ["g", "max"]
     },
     "drednaw-gmax": {
         "species_name": "drednaw",
@@ -6151,7 +6153,7 @@
             "gigantamax drednaw",
             "g-max drednaw"
         ],
-        "qualifiers": ["gigantamax"]
+        "qualifiers": ["g", "max"]
     },
     "coalossal-gmax": {
         "species_name": "coalossal",
@@ -6160,7 +6162,7 @@
             "gigantamax coalossal",
             "g-max coalossal"
         ],
-        "qualifiers": ["gigantamax"]
+        "qualifiers": ["g", "max"]
     },
     "flapple-gmax": {
         "species_name": "flapple",
@@ -6169,7 +6171,7 @@
             "gigantamax flapple",
             "g-max flapple"
         ],
-        "qualifiers": ["gigantamax"]
+        "qualifiers": ["g", "max"]
     },
     "appletun-gmax": {
         "species_name": "appletun",
@@ -6178,7 +6180,7 @@
             "gigantamax appletun",
             "g-max appletun"
         ],
-        "qualifiers": ["gigantamax"]
+        "qualifiers": ["g", "max"]
     },
     "sandaconda-gmax": {
         "species_name": "sandaconda",
@@ -6187,7 +6189,7 @@
             "gigantamax sandaconda",
             "g-max sandaconda"
         ],
-        "qualifiers": ["gigantamax"]
+        "qualifiers": ["g", "max"]
     },
     "toxtricity-amped-gmax": {
         "species_name": "toxtricity",
@@ -6196,7 +6198,7 @@
             "gigantamax toxtricity",
             "g-max toxtricity"
         ],
-        "qualifiers": ["gigantamax"]
+        "qualifiers": ["g", "max"]
     },
     "centiskorch-gmax": {
         "species_name": "centiskorch",
@@ -6205,7 +6207,7 @@
             "gigantamax centiskorch",
             "g-max centiskorch"
         ],
-        "qualifiers": ["gigantamax"]
+        "qualifiers": ["g", "max"]
     },
     "hatterene-gmax": {
         "species_name": "hatterene",
@@ -6214,7 +6216,7 @@
             "gigantamax hatterene",
             "g-max hatterene"
         ],
-        "qualifiers": ["gigantamax"]
+        "qualifiers": ["g", "max"]
     },
     "grimmsnarl-gmax": {
         "species_name": "grimmsnarl",
@@ -6223,7 +6225,7 @@
             "gigantamax grimmsnarl",
             "g-max grimmsnarl"
         ],
-        "qualifiers": ["gigantamax"]
+        "qualifiers": ["g", "max"]
     },
     "alcremie-gmax": {
         "species_name": "alcremie",
@@ -6232,7 +6234,7 @@
             "gigantamax alcremie",
             "g-max alcremie"
         ],
-        "qualifiers": ["gigantamax"]
+        "qualifiers": ["g", "max"]
     },
     "copperajah-gmax": {
         "species_name": "copperajah",
@@ -6241,7 +6243,7 @@
             "gigantamax copperajah",
             "g-max copperajah"
         ],
-        "qualifiers": ["gigantamax"]
+        "qualifiers": ["g", "max"]
     },
     "duraludon-gmax": {
         "species_name": "duraludon",
@@ -6250,7 +6252,7 @@
             "gigantamax duraludon",
             "g-max duraludon"
         ],
-        "qualifiers": ["gigantamax"]
+        "qualifiers": ["g", "max"]
     },
     "urshifu-single-strike-gmax": {
         "species_name": "urshifu",
@@ -6263,7 +6265,7 @@
             "single strike gmax urshifu",
             "single strike gigantamax style urshifu"
         ],
-        "qualifiers": ["gigantamax", "single strike style"]
+        "qualifiers": ["g", "max", "single strike style"]
     },
     "urshifu-rapid-strike-gmax": {
         "species_name": "urshifu",
@@ -6276,7 +6278,7 @@
             "rapid strike gmax urshifu",
             "rapid strike gigantamax style urshifu"
         ],
-        "qualifiers": ["gigantamax", "rapid strike style"]
+        "qualifiers": ["g", "max", "rapid strike style"]
     },
     "toxtricity-low-key-gmax": {
         "species_name": "toxtricity",
