@@ -7,6 +7,23 @@ import random
 import json
 import time
 from PIL import Image
+import threading
+
+class CustomThread(threading.Thread):
+    # by Biren Mer from https://medium.com/@birenmer/threading-the-needle-returning-values-from-python-threads-with-ease-ace21193c148
+    def __init__(self, group=None, target=None, name=None, args=(), kwargs={}, verbose=None):
+        # Initializing the Thread class
+        super().__init__(group, target, name, args, kwargs)
+        self._return = None
+
+    # Overriding the Thread.run function
+    def run(self):
+        if self._target is not None:
+            self._return = self._target(*self._args, **self._kwargs)
+
+    def join(self):
+        super().join()
+        return self._return
 
 def silhouette(surface):
     result = pygame.Surface(surface.get_size(), pygame.SRCALPHA)
@@ -26,6 +43,7 @@ class GameState:
         self.adjusted_game_start: float = 0
         self.randomize_after: bool = True
         self.specific_mode: bool = False
+        self.fast_mode: bool = False
 
     def reset(self, new_list: list, randomize: bool | None = None) -> None:
         if randomize is None:
@@ -68,6 +86,12 @@ class Pokemon:
                 if qualifier not in guessed_name:
                     return False
         return guessed_name == self.species_name or guessed_name in self.aliases
+
+def get_next_pokemon(state: GameState, pokemon_data: dict):
+    if state.index + 1 < len(state.pokemon_list):
+        return Pokemon(state.pokemon_list[state.index + 1], pokemon_data)
+    else:
+        return Pokemon(state.pokemon_list[0], pokemon_data)
 
 def main():
     pokemon_list = [p['name'] for p in pb.APIResourceList('pokemon')]
@@ -161,6 +185,9 @@ def main():
     load_start_time = 0
     backspace_held_for = 0
 
+    next_pkmn_thread = CustomThread()
+    next_pkmn_thread.start()
+
     # Game Loop
     while True:
         for event in pygame.event.get():
@@ -196,6 +223,14 @@ def main():
                         case "QUIT":
                             pygame.quit()
                             sys.exit()
+                        case "FASTMODE":
+                            next_pkmn_thread.join()
+                            state.fast_mode = True
+                            next_pkmn_thread = CustomThread(target = get_next_pokemon, args = (state, pokemon_data))
+                            next_pkmn_thread.start()
+                        case "NOFAST":
+                            next_pkmn_thread.join()
+                            state.fast_mode = False
 
                     if state.guess[:9].upper() == "CONTAINS:":
                         print(f"switching to ids containg {state.guess[9:].lower()}")
@@ -247,7 +282,15 @@ def main():
                 state.adjusted_game_start = 0
 
             # update variables
-            pokemon = Pokemon(state.pokemon_list[state.index], pokemon_data)            
+            if not state.fast_mode:
+                pokemon = Pokemon(state.pokemon_list[state.index], pokemon_data)
+            else:
+                pokemon = next_pkmn_thread.join()   
+                next_pkmn_thread = CustomThread(target = get_next_pokemon, args = (state, pokemon_data))
+                next_pkmn_thread.start()       
+            if state.index == 0 and state.fast_mode:
+                # fixes resets when fast mode is on
+                pokemon = Pokemon(state.pokemon_list[state.index], pokemon_data)
             state.pokemon_chosen = True
             state.pokemon_guessed = False
             state.guess = ''
@@ -267,7 +310,10 @@ def main():
             screen.blit(pokemon.shadow_img, (0, 0))
         else:
             state.pokemon_chosen = False
-            screen.blit(pokemon.img, (0, 0))
+            if not state.fast_mode:
+                screen.blit(pokemon.img, (0, 0))
+            else:
+                screen.blit(pokemon.shadow_img, (0, 0))
             load_start_time = time.time()
         screen.blit(guess_surface, (5, 480))
         screen.blit(guess_num_surface, (5, 510))

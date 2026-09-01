@@ -24,3 +24,9 @@ Commands (Type the command then hit return/enter):
     - Restricts the pool to only ids containing filter
 - START:&lt;letter&gt;
     - Restricts the pool to only ids starting with letter
+- FASTMODE
+    - Enables fast mode
+    - Uses threading to reduce or even remove loading times between pokemon
+    - Also removes the color pokemon appearing to reduce flashing
+- NOFAST
+    - Disables fast mode
