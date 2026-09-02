@@ -228,9 +228,11 @@ def main():
                             state.fast_mode = True
                             next_pkmn_thread = CustomThread(target = get_next_pokemon, args = (state, pokemon_data))
                             next_pkmn_thread.start()
+                            print("Fast Mode Enabled.")
                         case "NOFAST":
                             next_pkmn_thread.join()
                             state.fast_mode = False
+                            print("Fast Mode Disabled.")
 
                     if state.guess[:9].upper() == "CONTAINS:":
                         print(f"switching to ids containg {state.guess[9:].lower()}")
