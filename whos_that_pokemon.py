@@ -279,7 +279,7 @@ def main():
                 if state.randomize_after:
                     random.shuffle(state.pokemon_list)
                 state.index = 0
-                print(f"Finished in RTA: {time.time() - state.game_start:.2f} / IGT: {now - state.game_start:.2f} seconds")
+                print(f"Finished set of {len(state.pokemon_list)} Pokémon in RTA: {time.time() - state.game_start:.2f} / IGT: {now - state.game_start:.2f} seconds")
                 state.game_start = time.time()
                 state.adjusted_game_start = 0
 
