@@ -1715,7 +1715,8 @@
         "image_link": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/421.png",
         "aliases": [
             "overcast cherrim",
-            "overcast form cherrim"
+            "overcast form cherrim",
+            "cherrim overcast form"
         ],
         "qualifiers": ["overcast form"]
     },
@@ -2290,7 +2291,8 @@
         "image_link": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/555.png",
         "aliases": [
             "standard darmanitan",
-            "standard mode darmanitan"
+            "standard mode darmanitan",
+            "darmanitan standard mode"
         ],
         "qualifiers": ["standard mode"]
     },
@@ -2783,7 +2785,8 @@
         "species_name": "pyroar",
         "image_link": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/668.png",
         "aliases": [
-            "male pyroar"
+            "male pyroar",
+            "pyroar male"
         ],
         "qualifiers": ["male"]
     },
@@ -3121,7 +3124,8 @@
         "image_link": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/745.png",
         "aliases": [
             "midday lycanroc",
-            "midday form lycanroc"
+            "midday form lycanroc",
+            "lycanroc midday form"
         ],
         "qualifiers": ["midday form"]
     },
@@ -3559,7 +3563,8 @@
         "image_link": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/849.png",
         "aliases": [
             "amped toxtricity",
-            "amped form toxtricity"
+            "amped form toxtricity",
+            "toxtricity amped form"
         ],
         "qualifiers": ["amped form"]
     },
@@ -3668,7 +3673,8 @@
         "image_link": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/875.png",
         "aliases": [
             "ice eiscue",
-            "ice face eiscue"
+            "ice face eiscue",
+            "eiscue ice face"
         ],
         "qualifiers": ["ice face"]
     },
@@ -3685,7 +3691,8 @@
         "image_link": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/877.png",
         "aliases": [
             "full belly morpeko",
-            "full belly mode morpeko"
+            "full belly mode morpeko",
+            "morpeko full belly mode"
         ],
         "qualifiers": ["full belly mode"]
     },
@@ -4071,7 +4078,8 @@
         "image_link": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/964.png",
         "aliases": [
             "zero palafin",
-            "zero form palafin"
+            "zero form palafin",
+            "palafin zero form"
         ],
         "qualifiers": ["zero form"]
     },
@@ -4132,7 +4140,8 @@
         "image_link": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/978.png",
         "aliases": [
             "curly tatsugiri",
-            "curly form tatsugiri"
+            "curly form tatsugiri",
+            "tatsugiri curly form"
         ],
         "qualifiers": ["curly form"]
     },
@@ -4153,6 +4162,7 @@
         "image_link": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/982.png",
         "aliases": [
             "two-segment form dudunsparce",
+            "dudunsparce two-segment form",
             "two-segment dudunsparce"
         ],
         "qualifiers": ["two-segment form"]
@@ -4226,7 +4236,8 @@
         "image_link": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/999.png",
         "aliases": [
             "chest gimmighoul",
-            "chest form gimmighoul"
+            "chest form gimmighoul",
+            "gimmighoul chest form"
         ],
         "qualifiers": ["chest form"]
     },
@@ -4263,7 +4274,8 @@
         "image_link": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1007.png",
         "aliases": [
             "apex koraidon",
-            "apex build koraidon"
+            "apex build koraidon",
+            "koraidon apex build"
         ],
         "qualifiers": ["apex build"]
     },
@@ -4272,7 +4284,8 @@
         "image_link": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1008.png",
         "aliases": [
             "ultimate miraidon",
-            "ultimate mode miraidon"
+            "ultimate mode miraidon",
+            "miraidon ultimate mode"
         ],
         "qualifiers": ["ultimate mode"]
     },
@@ -4346,7 +4359,8 @@
         "image_link": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1024.png",
         "aliases": [
             "normal terapagos",
-            "normal form terapagos"
+            "normal form terapagos",
+            "terapagos normal form"
         ],
         "qualifiers": ["normal form"]
     },
@@ -4478,7 +4492,8 @@
         "image_link": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10013.png",
         "aliases": [
             "sunny castform",
-            "sunny form castform"
+            "sunny form castform",
+            "castform sunny form"
         ],
         "qualifiers": ["sunny form"]
     },
@@ -4487,7 +4502,8 @@
         "image_link": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10014.png",
         "aliases": [
             "rainy castform",
-            "rainy form castform"
+            "rainy form castform",
+            "castform rainy form"
         ],
         "qualifiers": ["rainy form"]
     },
@@ -4496,7 +4512,8 @@
         "image_link": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10015.png",
         "aliases": [
             "snowy castform",
-            "snowy form castform"
+            "snowy form castform",
+            "castform snowy form"
         ],
         "qualifiers": ["snowy form"]
     },
@@ -4514,7 +4531,8 @@
         "image_link": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10017.png",
         "aliases": [
             "zen darmanitan",
-            "zen mode darmanitan"
+            "zen mode darmanitan",
+            "darmanitan zen mode"
         ],
         "qualifiers": ["zen mode"]
     },
@@ -5428,14 +5446,15 @@
             "sensu oricorio",
             "sensu style oricorio"
         ],
-        "qualifiers": ["sensu"]
+        "qualifiers": ["sensu style"]
     },
     "lycanroc-midnight": {
         "species_name": "lycanroc",
         "image_link": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10126.png",
         "aliases": [
             "midnight lycanroc",
-            "midnight form lycanroc"
+            "midnight form lycanroc",
+            "lycanroc midnight form"
         ],
         "qualifiers": ["midnight form"]
     },
@@ -5594,7 +5613,8 @@
         "image_link": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10152.png",
         "aliases": [
             "dusk lycanroc",
-            "dusk form lycanroc"
+            "dusk form lycanroc",
+            "lycanroc dusk form"
         ],
         "qualifiers": ["dusk form"]
     },
@@ -5882,7 +5902,8 @@
         "image_link": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10184.png",
         "aliases": [
             "low key toxtricity",
-            "low key form toxtricity"
+            "low key form toxtricity",
+            "toxtricity low key form"
         ],
         "qualifiers": ["low key form"]
     },
@@ -5891,7 +5912,8 @@
         "image_link": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10185.png",
         "aliases": [
             "noice eiscue",
-            "noice face eiscue"
+            "noice face eiscue",
+            "eiscue noice face"
         ],
         "qualifiers": ["noice face"]
     },
@@ -5908,7 +5930,8 @@
         "image_link": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10187.png",
         "aliases": [
             "hangry morpeko",
-            "hangry mode morpeko"
+            "hangry mode morpeko",
+            "morpeko hangry mode"
         ],
         "qualifiers": ["hangry mode"]
     },
@@ -6262,8 +6285,10 @@
             "single strike style urshifu",
             "gmax single strike urshifu",
             "gigantamax single strike style urshifu",
+            "gigantamax urshifu single strike style",
+            "gmax urshifu single strike style",
             "single strike gmax urshifu",
-            "single strike gigantamax style urshifu"
+            "single strike style gigantamax urshifu"
         ],
         "qualifiers": ["g", "max", "single strike style"]
     },
@@ -6275,8 +6300,10 @@
             "rapid strike style urshifu",
             "gmax rapid strike urshifu",
             "gigantamax rapid strike style urshifu",
+            "gigantamax urshifu rapid strike style",
+            "gmax urshifu rapid strike style",
             "rapid strike gmax urshifu",
-            "rapid strike gigantamax style urshifu"
+            "rapid strike style gigantamax urshifu"
         ],
         "qualifiers": ["g", "max", "rapid strike style"]
     },
@@ -6544,6 +6571,7 @@
         "image_link": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10255.png",
         "aliases": [
             "three-segment form dudunsparce",
+            "dudunsparce three-segment form",
             "three-segment dudunsparce"
         ],
         "qualifiers": ["three-segment form"]
@@ -6553,7 +6581,8 @@
         "image_link": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10256.png",
         "aliases": [
             "hero palafin",
-            "hero form palafin"
+            "hero form palafin",
+            "palafin hero form"
         ],
         "qualifiers": ["hero form"]
     },
@@ -6570,7 +6599,8 @@
         "image_link": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10258.png",
         "aliases": [
             "droopy tatsugiri",
-            "droopy form tatsugiri"
+            "droopy form tatsugiri",
+            "tatsugiri droopy form"
         ],
         "qualifiers": ["droopy form"]
     },
@@ -6579,7 +6609,8 @@
         "image_link": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10259.png",
         "aliases": [
             "stretchy tatsugiri",
-            "stretchy form tatsugiri"
+            "stretchy form tatsugiri",
+            "tatsugiri stretchy form"
         ],
         "qualifiers": ["stretchy form"]
     },
@@ -6603,7 +6634,8 @@
         "image_link": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10263.png",
         "aliases": [
             "roaming gimmighoul",
-            "roaming form gimmighoul"
+            "roaming form gimmighoul",
+            "gimmighoul roaming form"
         ],
         "qualifiers": ["roaming form"]
     },
@@ -6703,7 +6735,8 @@
         "image_link": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10276.png",
         "aliases": [
             "terastal terapagos",
-            "terastal form terapagos"
+            "terastal form terapagos",
+            "terapagos terastal form"
         ],
         "qualifiers": ["terastal form"]
     },
@@ -6712,7 +6745,8 @@
         "image_link": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10277.png",
         "aliases": [
             "stellar terapagos",
-            "stellar form terapagos"
+            "stellar form terapagos",
+            "terapagos stellar form"
         ],
         "qualifiers": ["stellar form"]
     },
@@ -7092,7 +7126,8 @@
         "image_link": "https://archives.bulbagarden.net/media/upload/9/90/0421Cherrim-Sunshine.png",
         "aliases": [
             "sunshine cherrim",
-            "sunshine form cherrim"
+            "sunshine form cherrim",
+            "cherrim sunshine form"
         ],
         "qualifiers": ["sunshine form"]
     },
