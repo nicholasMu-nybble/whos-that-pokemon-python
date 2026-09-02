@@ -106,7 +106,12 @@ def main():
         if name not in pokemon_data:
             print(f"Adding {name}.")
             pokemon_resource = pb.pokemon(name)
-            pokemon_data[name] = (pokemon_resource.species.name, pokemon_resource.sprites.other.official_artwork.front_default)
+            pokemon_data[name] = {
+                "species_name": pokemon_resource.species.name, 
+                "image_link": pokemon_resource.sprites.other.official_artwork.front_default,
+                "dex_number": int(pokemon_resource.species.url.split("/")[-2]),
+                "types": [t.type.name for t in pokemon_resource.types]
+            }
             json_changed = True
 
     if json_changed:
@@ -233,17 +238,55 @@ def main():
                             next_pkmn_thread.join()
                             state.fast_mode = False
                             print("Fast Mode Disabled.")
+                        case "RANDOMIZE":
+                            state.randomize_after = True
+                            print("Random Mode Enabled")
+                        case "NORANDOMIZE":
+                            state.randomize_after = False
+                            print("Random Mode Disabled")
+                        case "ALPHABETICAL":
+                            print("Enabling Alphabetical Mode")
+                            state.reset(sorted(state.pokemon_list), False)
+                        case "NUMERICAL":
+                            print("Enabling Numerical Mode")
+                            state.reset(sorted(state.pokemon_list, lambda m: (state.pokemon_data[m]["dex_number"], len(m))))
 
                     if state.guess[:9].upper() == "CONTAINS:":
                         print(f"switching to ids containg {state.guess[9:].lower()}")
                         conditions = state.guess[9:].split("|")
-                        contains_list = [mon for mon in state.pokemon_list if any(cond in mon for cond in conditions)]
+                        matches_list = [mon for mon in state.pokemon_list if any(cond in mon for cond in conditions)]
                         state.specific_mode = False
-                        state.reset(contains_list, True)
+                        state.reset(matches_list)
                     elif state.guess[:6].upper() == "START:" and len(state.guess) == 7:
                         print(f"switching to ids starting with {state.guess[-1].lower()}")
-                        starts_list = [mon for mon in state.pokemon_list if mon[0] == state.guess[-1].lower()]
-                        state.reset(starts_list, True)
+                        matches_list = [mon for mon in state.pokemon_list if mon[0] == state.guess[-1].lower()]
+                        state.reset(matches_list)
+                    elif state.guess[:5].upper() == "TYPE:":
+                        type_condition = state.guess[6:]
+                        print(f"switching to only pokemon of type {type_condition}")
+                        if "|" in type_condition:
+                            types = type_condition.split("|")
+                            matches_list = [mon for mon in state.pokemon_list if any(type in state.pokemon_data[mon]["types"] for type in types)]
+                        elif "&" in type_condition:
+                            types = type_condition.split("&")
+                            matches_list = [mon for mon in state.pokemon_list if all(type in state.pokemon_data[mon]["types"] for type in types)]
+                        else:
+                            matches_list = [mon for mon in state.pokemon_list if type_condition in state.pokemon_data[mon]["types"]]
+                        state.reset(matches_list)
+                    elif state.guess[:7].upper() == "BEFORE:":
+                        try:
+                            max_num = int(state.guess[7:])
+                            print(f"switching to only pokemon before dex number {max_num}")
+                            matches_list = [mon for mon in state.pokemon_list if state.pokemon_data[mon]["dex_number"] <= max_num] 
+                        except ValueError:
+                            print("can't switch if you don't input a valid number")
+                    elif state.guess[:6].upper() == "AFTER:":
+                        try:
+                            min_num = int(state.guess[6:])
+                            print(f"switching to only pokemon after dex number {min_num}")
+                            matches_list = [mon for mon in state.pokemon_list if state.pokemon_data[mon]["dex_number"] >= min_num] 
+                        except ValueError:
+                            print("can't switch if you don't input a valid number")
                     state.guess = ''
                 elif event.key != pygame.K_BACKSPACE:
                     state.guess += event.unicode

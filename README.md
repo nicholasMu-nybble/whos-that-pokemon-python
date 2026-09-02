@@ -28,7 +28,15 @@ Commands (Type the command then hit return/enter):
     - NORANDOMIZE
         - Disabled Random Mode
         - When finishing or applying a filter, the order will stay the same
-        - May be enabled by other modes, such as POKERAP
+        - May be caused by other modes, such as POKERAP
+    - NUMERICAL
+        - Switch to Numerical Mode
+        - Disables Random Mode
+        - Orders pokemon by dex number
+    - ALPHABETICAL
+        - Switch to Alphabetical Mode
+        - Disables Random Mode
+        - Orders pokemon alphabetically by id
 - Filters
     - ONLYSPECIFIC
         - Limit the pool of pokemon to only those affected by specific mode
