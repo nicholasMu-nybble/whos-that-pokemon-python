@@ -61,3 +61,6 @@ Commands (Type the command then hit return/enter):
         - Resets the game to its original state
     - QUIT
         - Closes the game
+    - REVERSE
+        - Reverses the pokemon list.
+        - Disables Random Mode

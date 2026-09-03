@@ -249,7 +249,10 @@ def main():
                             state.reset(sorted(state.pokemon_list), False)
                         case "NUMERICAL":
                             print("Enabling Numerical Mode")
-                            state.reset(sorted(state.pokemon_list, lambda m: (state.pokemon_data[m]["dex_number"], len(m))))
+                            state.reset(sorted(state.pokemon_list, key = lambda m: (pokemon_data[m]["dex_number"], len(m))))
+                        case "REVERSE":
+                            print("Reversing Pokemon List.")
+                            state.reset(state.pokemon_list[::-1], False)
 
                     if state.guess[:9].upper() == "CONTAINS:":
                         print(f"switching to ids containg {state.guess[9:].lower()}")
@@ -266,25 +269,25 @@ def main():
                         print(f"switching to only pokemon of type {type_condition}")
                         if "|" in type_condition:
                             types = type_condition.split("|")
-                            matches_list = [mon for mon in state.pokemon_list if any(type in state.pokemon_data[mon]["types"] for type in types)]
+                            matches_list = [mon for mon in state.pokemon_list if any(type in pokemon_data[mon]["types"] for type in types)]
                         elif "&" in type_condition:
                             types = type_condition.split("&")
-                            matches_list = [mon for mon in state.pokemon_list if all(type in state.pokemon_data[mon]["types"] for type in types)]
+                            matches_list = [mon for mon in state.pokemon_list if all(type in pokemon_data[mon]["types"] for type in types)]
                         else:
-                            matches_list = [mon for mon in state.pokemon_list if type_condition in state.pokemon_data[mon]["types"]]
+                            matches_list = [mon for mon in state.pokemon_list if type_condition in pokemon_data[mon]["types"]]
                         state.reset(matches_list)
                     elif state.guess[:7].upper() == "BEFORE:":
                         try:
                             max_num = int(state.guess[7:])
                             print(f"switching to only pokemon before dex number {max_num}")
-                            matches_list = [mon for mon in state.pokemon_list if state.pokemon_data[mon]["dex_number"] <= max_num] 
+                            matches_list = [mon for mon in state.pokemon_list if pokemon_data[mon]["dex_number"] <= max_num] 
                         except ValueError:
                             print("can't switch if you don't input a valid number")
                     elif state.guess[:6].upper() == "AFTER:":
                         try:
                             min_num = int(state.guess[6:])
                             print(f"switching to only pokemon after dex number {min_num}")
-                            matches_list = [mon for mon in state.pokemon_list if state.pokemon_data[mon]["dex_number"] >= min_num] 
+                            matches_list = [mon for mon in state.pokemon_list if pokemon_data[mon]["dex_number"] >= min_num] 
                         except ValueError:
                             print("can't switch if you don't input a valid number")
                     state.guess = ''
