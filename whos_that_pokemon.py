@@ -281,6 +281,7 @@ def main():
                             max_num = int(state.guess[7:])
                             print(f"switching to only pokemon before dex number {max_num}")
                             matches_list = [mon for mon in state.pokemon_list if pokemon_data[mon]["dex_number"] <= max_num] 
+                            state.reset(matches_list)
                         except ValueError:
                             print("can't switch if you don't input a valid number")
                     elif state.guess[:6].upper() == "AFTER:":
@@ -288,6 +289,7 @@ def main():
                             min_num = int(state.guess[6:])
                             print(f"switching to only pokemon after dex number {min_num}")
                             matches_list = [mon for mon in state.pokemon_list if pokemon_data[mon]["dex_number"] >= min_num] 
+                            state.reset(matches_list)
                         except ValueError:
                             print("can't switch if you don't input a valid number")
                     state.guess = ''
