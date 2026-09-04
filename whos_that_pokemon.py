@@ -249,7 +249,7 @@ def main():
                             state.reset(sorted(state.pokemon_list), False)
                         case "NUMERICAL":
                             print("Enabling Numerical Mode")
-                            state.reset(sorted(state.pokemon_list, key = lambda m: (pokemon_data[m]["dex_number"], len(m))))
+                            state.reset(sorted(state.pokemon_list, key = lambda m: (pokemon_data[m]["dex_number"], len(m))), False)
                         case "REVERSE":
                             print("Reversing Pokemon List.")
                             state.reset(state.pokemon_list[::-1], False)
@@ -265,7 +265,7 @@ def main():
                         matches_list = [mon for mon in state.pokemon_list if mon[0] == state.guess[-1].lower()]
                         state.reset(matches_list)
                     elif state.guess[:5].upper() == "TYPE:":
-                        type_condition = state.guess[6:]
+                        type_condition = state.guess[5:]
                         print(f"switching to only pokemon of type {type_condition}")
                         if "|" in type_condition:
                             types = type_condition.split("|")
