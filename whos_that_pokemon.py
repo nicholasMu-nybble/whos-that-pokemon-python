@@ -249,7 +249,7 @@ def main():
                             state.reset(sorted(state.pokemon_list), False)
                         case "NUMERICAL":
                             print("Enabling Numerical Mode")
-                            state.reset(sorted(state.pokemon_list, key = lambda m: (pokemon_data[m]["dex_number"], len(m))), False)
+                            state.reset(sorted(state.pokemon_list, key = lambda m: (pokemon_data[m]["dex_number"], m)), False)
                         case "REVERSE":
                             print("Reversing Pokemon List.")
                             state.reset(state.pokemon_list[::-1], False)
