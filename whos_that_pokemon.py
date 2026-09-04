@@ -93,6 +93,146 @@ def get_next_pokemon(state: GameState, pokemon_data: dict):
     else:
         return Pokemon(state.pokemon_list[0], pokemon_data)
 
+def check_commands(state: GameState, pokemon_data: dict, full_pokemon_list: list) -> None:
+    pokerap_list = ["electrode", "diglett", "nidoran-m", "mankey",
+                    "venusaur", "rattata", "fearow", "pidgey",
+                    "seaking", "jolteon", "dragonite", "gastly",
+                    "ponyta", "vaporeon", "poliwrath", "butterfree",
+
+                    "venomoth", "poliwag", "nidorino", "golduck",
+                    "ivysaur", "grimer", "victreebel", "moltres",
+                    "nidoking", "farfetchd", "abra", "jigglypuff",
+                    "kingler", "rhyhorn", "clefable", "wigglytuff",
+
+                    "zubat", "primeape", "meowth", "onix",
+                    "geodude", "rapidash", "magneton", "snorlax",
+                    "gengar", "tangela", "goldeen", "spearow",
+                    "weezing", "seel", "gyarados", "slowbro",
+
+                    "kabuto", "persian", "paras", "horsea",
+                    "raticate", "magnemite", "kadabra", "weepinbell",
+                    "ditto", "cloyster", "caterpie", "sandshrew",
+                    "bulbasaur", "charmander", "golem", "pikachu",
+
+                    "alakazam", "doduo", "venonat", "machoke",
+                    "kangaskhan", "hypno", "electabuzz", "flareon",
+                    "blastoise", "poliwhirl", "oddish", "drowzee",
+                    "raichu", "nidoqueen", "bellsprout", "starmie",
+
+                    "metapod", "marowak", "kakuna", "clefairy",
+                    "dodrio", "seadra", "vileplume", "krabby",
+                    "lickitung", "tauros", "weedle", "nidoran-f",
+                    "machop", "shellder", "porygon", "hitmonchan",
+
+                    "articuno", "jynx", "nidorina", "beedrill",
+                    "haunter", "squirtle", "chansey", 
+                    "parasect", "exeggcute", "muk", "dewgong",
+                    "pidgeotto", "lapras", "vulpix", "rhydon",
+
+                    "charizard", "machamp", "pinsir", "koffing",
+                    "dugtrio", "golbat", "staryu", "magikarp",
+                    "ninetales", "ekans", "omastar",
+                    "scyther", "tentacool", "dragonair", "magmar",
+
+                    "sandslash", "hitmonlee", "psyduck", "arcanine",
+                    "eevee", "exeggutor", "kabutops", "zapdos",
+                    "dratini", "growlithe", "mr-mime", "cubone",
+                    "graveler", "voltorb", "gloom",
+
+                    "charmeleon", "wartortle",
+                    "mewtwo", "tentacruel", "aerodactyl",
+                    "omanyte", "slowpoke",
+                    "pidgeot", "arbok"]
+    match state.guess.upper():
+        case "POKERAP":
+            print("switching to pokerap mode")
+            state.reset(pokerap_list, False)
+        case "RESET":
+            print("resetting game")
+            state.reset(full_pokemon_list, True)
+        case "SPECIFIC":
+            print("enabling specific mode")
+            state.specific_mode = True
+            state.guess = ""
+        case "NOSPECIFIC":
+            print("disabling specific mode")
+            state.specific_mode = False
+            state.guess = ""
+        case "ONLYSPECIFIC":
+            print("Switching to only pokemon affected by specific mode.")
+            # state.specific_mode = True
+            state.reset([mon for mon in state.pokemon_list if "qualifiers" in pokemon_data[mon]])
+        case "INVERT":
+            print("Inverting pokemon list")
+            state.reset([mon for mon in full_pokemon_list if mon not in state.pokemon_list])
+        case "QUIT":
+            pygame.quit()
+            sys.exit()
+        case "FASTMODE":
+            next_pkmn_thread.join()
+            state.fast_mode = True
+            next_pkmn_thread = CustomThread(target = get_next_pokemon, args = (state, pokemon_data))
+            next_pkmn_thread.start()
+            print("Fast Mode Enabled.")
+        case "NOFAST":
+            next_pkmn_thread.join()
+            state.fast_mode = False
+            print("Fast Mode Disabled.")
+        case "RANDOMIZE":
+            state.randomize_after = True
+            print("Random Mode Enabled")
+        case "NORANDOMIZE":
+            state.randomize_after = False
+            print("Random Mode Disabled")
+        case "ALPHABETICAL":
+            print("Enabling Alphabetical Mode")
+            state.reset(sorted(state.pokemon_list), False)
+        case "NUMERICAL":
+            print("Enabling Numerical Mode")
+            state.reset(sorted(state.pokemon_list, key = lambda m: (pokemon_data[m]["dex_number"], m)), False)
+        case "REVERSE":
+            print("Reversing Pokemon List.")
+            state.reset(state.pokemon_list[::-1], False)
+
+    if state.guess[:9].upper() == "CONTAINS:":
+        print(f"switching to ids containg {state.guess[9:].lower()}")
+        conditions = state.guess[9:].split("|")
+        matches_list = [mon for mon in state.pokemon_list if any(cond in mon for cond in conditions)]
+        state.specific_mode = False
+        state.reset(matches_list)
+    elif state.guess[:6].upper() == "START:" and len(state.guess) == 7:
+        print(f"switching to ids starting with {state.guess[-1].lower()}")
+        matches_list = [mon for mon in state.pokemon_list if mon[0] == state.guess[-1].lower()]
+        state.reset(matches_list)
+    elif state.guess[:5].upper() == "TYPE:":
+        type_condition = state.guess[5:]
+        print(f"switching to only pokemon of type {type_condition}")
+        if "|" in type_condition:
+            types = type_condition.split("|")
+            matches_list = [mon for mon in state.pokemon_list if any(type in pokemon_data[mon]["types"] for type in types)]
+        elif "&" in type_condition:
+            types = type_condition.split("&")
+            matches_list = [mon for mon in state.pokemon_list if all(type in pokemon_data[mon]["types"] for type in types)]
+        else:
+            matches_list = [mon for mon in state.pokemon_list if type_condition in pokemon_data[mon]["types"]]
+        state.reset(matches_list)
+    elif state.guess[:7].upper() == "BEFORE:":
+        try:
+            max_num = int(state.guess[7:])
+            print(f"switching to only pokemon before dex number {max_num}")
+            matches_list = [mon for mon in state.pokemon_list if pokemon_data[mon]["dex_number"] <= max_num] 
+            state.reset(matches_list)
+        except ValueError:
+            print("can't switch if you don't input a valid number")
+    elif state.guess[:6].upper() == "AFTER:":
+        try:
+            min_num = int(state.guess[6:])
+            print(f"switching to only pokemon after dex number {min_num}")
+            matches_list = [mon for mon in state.pokemon_list if pokemon_data[mon]["dex_number"] >= min_num] 
+            state.reset(matches_list)
+        except ValueError:
+            print("can't switch if you don't input a valid number")
+
 def main():
     pokemon_list = [p['name'] for p in pb.APIResourceList('pokemon')]
 
@@ -123,59 +263,8 @@ def main():
             pokemon_list.append(name)
 
     full_pokemon_list = [pokemon for pokemon in pokemon_list if "skip" not in pokemon_data[pokemon] or not pokemon_data[pokemon]["skip"]]
-    pokerap_list = ["electrode", "diglett", "nidoran-m", "mankey",
-                "venusaur", "rattata", "fearow", "pidgey",
-                "seaking", "jolteon", "dragonite", "gastly",
-                "ponyta", "vaporeon", "poliwrath", "butterfree",
-
-                "venomoth", "poliwag", "nidorino", "golduck",
-                "ivysaur", "grimer", "victreebel", "moltres",
-                "nidoking", "farfetchd", "abra", "jigglypuff",
-                "kingler", "rhyhorn", "clefable", "wigglytuff",
-
-                "zubat", "primeape", "meowth", "onix",
-                "geodude", "rapidash", "magneton", "snorlax",
-                "gengar", "tangela", "goldeen", "spearow",
-                "weezing", "seel", "gyarados", "slowbro",
-
-                "kabuto", "persian", "paras", "horsea",
-                "raticate", "magnemite", "kadabra", "weepinbell",
-                "ditto", "cloyster", "caterpie", "sandshrew",
-                "bulbasaur", "charmander", "golem", "pikachu",
-
-                "alakazam", "doduo", "venonat", "machoke",
-                "kangaskhan", "hypno", "electabuzz", "flareon",
-                "blastoise", "poliwhirl", "oddish", "drowzee",
-                "raichu", "nidoqueen", "bellsprout", "starmie",
-
-                "metapod", "marowak", "kakuna", "clefairy",
-                "dodrio", "seadra", "vileplume", "krabby",
-                "lickitung", "tauros", "weedle", "nidoran-f",
-                "machop", "shellder", "porygon", "hitmonchan",
-
-                "articuno", "jynx", "nidorina", "beedrill",
-                "haunter", "squirtle", "chansey", 
-                "parasect", "exeggcute", "muk", "dewgong",
-                "pidgeotto", "lapras", "vulpix", "rhydon",
-
-                "charizard", "machamp", "pinsir", "koffing",
-                "dugtrio", "golbat", "staryu", "magikarp",
-                "ninetales", "ekans", "omastar",
-                "scyther", "tentacool", "dragonair", "magmar",
-
-                "sandslash", "hitmonlee", "psyduck", "arcanine",
-                "eevee", "exeggutor", "kabutops", "zapdos",
-                "dratini", "growlithe", "mr-mime", "cubone",
-                "graveler", "voltorb", "gloom",
-
-                "charmeleon", "wartortle",
-                "mewtwo", "tentacruel", "aerodactyl",
-                "omanyte", "slowpoke",
-                "pidgeot", "arbok"]
 
     print("Updates complete!\nNote that skips, aliases, and qualifiers must be added manually and will not be covered by the automatic update.")
-
-    random.shuffle(pokemon_list)
 
     pygame.init()
     clock = pygame.time.Clock()
@@ -203,95 +292,7 @@ def main():
                 # typing
                 if event.key == pygame.K_RETURN:
                     #commands
-                    match state.guess.upper():
-                        case "POKERAP":
-                            print("switching to pokerap mode")
-                            state.reset(pokerap_list, False)
-                        case "RESET":
-                            print("resetting game")
-                            state.reset(full_pokemon_list, True)
-                        case "SPECIFIC":
-                            print("enabling specific mode")
-                            state.specific_mode = True
-                            state.guess = ""
-                        case "NOSPECIFIC":
-                            print("disabling specific mode")
-                            state.specific_mode = False
-                            state.guess = ""
-                        case "ONLYSPECIFIC":
-                            print("Switching to only pokemon affected by specific mode.")
-                            # state.specific_mode = True
-                            state.reset([mon for mon in state.pokemon_list if "qualifiers" in pokemon_data[mon]])
-                        case "INVERT":
-                            print("Inverting pokemon list")
-                            state.reset([mon for mon in full_pokemon_list if mon not in state.pokemon_list])
-                        case "QUIT":
-                            pygame.quit()
-                            sys.exit()
-                        case "FASTMODE":
-                            next_pkmn_thread.join()
-                            state.fast_mode = True
-                            next_pkmn_thread = CustomThread(target = get_next_pokemon, args = (state, pokemon_data))
-                            next_pkmn_thread.start()
-                            print("Fast Mode Enabled.")
-                        case "NOFAST":
-                            next_pkmn_thread.join()
-                            state.fast_mode = False
-                            print("Fast Mode Disabled.")
-                        case "RANDOMIZE":
-                            state.randomize_after = True
-                            print("Random Mode Enabled")
-                        case "NORANDOMIZE":
-                            state.randomize_after = False
-                            print("Random Mode Disabled")
-                        case "ALPHABETICAL":
-                            print("Enabling Alphabetical Mode")
-                            state.reset(sorted(state.pokemon_list), False)
-                        case "NUMERICAL":
-                            print("Enabling Numerical Mode")
-                            state.reset(sorted(state.pokemon_list, key = lambda m: (pokemon_data[m]["dex_number"], m)), False)
-                        case "REVERSE":
-                            print("Reversing Pokemon List.")
-                            state.reset(state.pokemon_list[::-1], False)
-
-                    if state.guess[:9].upper() == "CONTAINS:":
-                        print(f"switching to ids containg {state.guess[9:].lower()}")
-                        conditions = state.guess[9:].split("|")
-                        matches_list = [mon for mon in state.pokemon_list if any(cond in mon for cond in conditions)]
-                        state.specific_mode = False
-                        state.reset(matches_list)
-                    elif state.guess[:6].upper() == "START:" and len(state.guess) == 7:
-                        print(f"switching to ids starting with {state.guess[-1].lower()}")
-                        matches_list = [mon for mon in state.pokemon_list if mon[0] == state.guess[-1].lower()]
-                        state.reset(matches_list)
-                    elif state.guess[:5].upper() == "TYPE:":
-                        type_condition = state.guess[5:]
-                        print(f"switching to only pokemon of type {type_condition}")
-                        if "|" in type_condition:
-                            types = type_condition.split("|")
-                            matches_list = [mon for mon in state.pokemon_list if any(type in pokemon_data[mon]["types"] for type in types)]
-                        elif "&" in type_condition:
-                            types = type_condition.split("&")
-                            matches_list = [mon for mon in state.pokemon_list if all(type in pokemon_data[mon]["types"] for type in types)]
-                        else:
-                            matches_list = [mon for mon in state.pokemon_list if type_condition in pokemon_data[mon]["types"]]
-                        state.reset(matches_list)
-                    elif state.guess[:7].upper() == "BEFORE:":
-                        try:
-                            max_num = int(state.guess[7:])
-                            print(f"switching to only pokemon before dex number {max_num}")
-                            matches_list = [mon for mon in state.pokemon_list if pokemon_data[mon]["dex_number"] <= max_num] 
-                            state.reset(matches_list)
-                        except ValueError:
-                            print("can't switch if you don't input a valid number")
-                    elif state.guess[:6].upper() == "AFTER:":
-                        try:
-                            min_num = int(state.guess[6:])
-                            print(f"switching to only pokemon after dex number {min_num}")
-                            matches_list = [mon for mon in state.pokemon_list if pokemon_data[mon]["dex_number"] >= min_num] 
-                            state.reset(matches_list)
-                        except ValueError:
-                            print("can't switch if you don't input a valid number")
+                    check_commands(state, pokemon_data, full_pokemon_list)
                     state.guess = ''
                 elif event.key != pygame.K_BACKSPACE:
                     state.guess += event.unicode
