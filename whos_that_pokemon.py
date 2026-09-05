@@ -168,16 +168,6 @@ def check_commands(state: GameState, pokemon_data: dict, full_pokemon_list: list
         case "QUIT":
             pygame.quit()
             sys.exit()
-        case "FASTMODE":
-            next_pkmn_thread.join()
-            state.fast_mode = True
-            next_pkmn_thread = CustomThread(target = get_next_pokemon, args = (state, pokemon_data))
-            next_pkmn_thread.start()
-            print("Fast Mode Enabled.")
-        case "NOFAST":
-            next_pkmn_thread.join()
-            state.fast_mode = False
-            print("Fast Mode Disabled.")
         case "RANDOMIZE":
             state.randomize_after = True
             print("Random Mode Enabled")
@@ -293,6 +283,19 @@ def main():
                 if event.key == pygame.K_RETURN:
                     #commands
                     check_commands(state, pokemon_data, full_pokemon_list)
+                    if "FAST" in state.guess.upper():
+                        # multithreading so im putting it in here so it dont break
+                        match state.guess.upper():
+                            case "FASTMODE":
+                                next_pkmn_thread.join()
+                                state.fast_mode = True
+                                next_pkmn_thread = CustomThread(target = get_next_pokemon, args = (state, pokemon_data))
+                                next_pkmn_thread.start()
+                                print("Fast Mode Enabled.")
+                            case "NOFAST":
+                                next_pkmn_thread.join()
+                                state.fast_mode = False
+                                print("Fast Mode Disabled.")
                     state.guess = ''
                 elif event.key != pygame.K_BACKSPACE:
                     state.guess += event.unicode
