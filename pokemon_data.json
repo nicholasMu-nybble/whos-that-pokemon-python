@@ -5634,6 +5634,7 @@
         "image_link": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/648.png",
         "aliases": [
             "aria forme meloetta",
+            "meloetta aria forme",
             "aria meloetta"
         ],
         "qualifiers": [
@@ -5933,7 +5934,8 @@
         "image_link": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/681.png",
         "aliases": [
             "shield aegislash",
-            "shield forme aegislash"
+            "shield forme aegislash",
+            "aegislash shield forme"
         ],
         "qualifiers": [
             "shield forme"
@@ -6474,7 +6476,8 @@
         "image_link": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/741.png",
         "aliases": [
             "baile oricorio",
-            "baile style oricorio"
+            "baile style oricorio",
+            "oricorio baile style"
         ],
         "qualifiers": [
             "baile style"
@@ -9377,6 +9380,7 @@
         "image_link": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10018.png",
         "aliases": [
             "pirouette forme meloetta",
+            "meloetta pirouette forme",
             "pirouette meloetta"
         ],
         "qualifiers": [
@@ -9504,7 +9508,8 @@
         "image_link": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10026.png",
         "aliases": [
             "blade aegislash",
-            "blade forme aegislash"
+            "blade forme aegislash",
+            "aegislash blade forme"
         ],
         "qualifiers": [
             "blade forme"
@@ -10954,7 +10959,8 @@
         "image_link": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10123.png",
         "aliases": [
             "pom-pom oricorio",
-            "pom-pom style oricorio"
+            "pom-pom style oricorio",
+            "oricorio pom-pom style"
         ],
         "qualifiers": [
             "pom-pom style"
@@ -10970,7 +10976,8 @@
         "image_link": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10124.png",
         "aliases": [
             "pa'u oricorio",
-            "pa'u style oricorio"
+            "pa'u style oricorio",
+            "oricorio pa'u style"
         ],
         "qualifiers": [
             "pa'u style"
@@ -10986,7 +10993,8 @@
         "image_link": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10125.png",
         "aliases": [
             "sensu oricorio",
-            "sensu style oricorio"
+            "sensu style oricorio",
+            "oricorio sensu style"
         ],
         "qualifiers": [
             "sensu style"
@@ -11864,7 +11872,8 @@
         "image_link": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10188.png",
         "aliases": [
             "crowned zacian",
-            "crowned sword zacian"
+            "crowned sword zacian",
+            "zacian crowned sword"
         ],
         "qualifiers": [
             "crowned sword"
@@ -11880,7 +11889,8 @@
         "image_link": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10189.png",
         "aliases": [
             "crowned zamazenta",
-            "crowned shield zamazenta"
+            "crowned shield zamazenta",
+            "zamazenta crowned shield"
         ],
         "qualifiers": [
             "crowned shield"
@@ -13108,7 +13118,8 @@
         "image_link": "https://archives.bulbagarden.net/media/upload/f/f2/1007Koraidon_Dream_6.png",
         "aliases": [
             "limited koraidon",
-            "limited build koraidon"
+            "limited build koraidon",
+            "koraidon limited build"
         ],
         "qualifiers": [
             "limited build"
@@ -13144,7 +13155,8 @@
         "image_link": "https://archives.bulbagarden.net/media/upload/c/ce/1007Koraidon_Dream_4.png",
         "aliases": [
             "gliding koraidon",
-            "gliding build koraidon"
+            "gliding build koraidon",
+            "koraidon gliding build"
         ],
         "qualifiers": [
             "gliding build"
@@ -13160,7 +13172,8 @@
         "image_link": "https://archives.bulbagarden.net/media/upload/9/91/1008Miraidon_Dream_5.png",
         "aliases": [
             "low power miraidon",
-            "low power mode miraidon"
+            "low power mode miraidon",
+            "miraidon low power mode"
         ],
         "qualifiers": [
             "low power mode"
@@ -13196,7 +13209,8 @@
         "image_link": "https://archives.bulbagarden.net/media/upload/0/0d/1008Miraidon_Dream_3.png",
         "aliases": [
             "glide miraidon",
-            "glide mode miraidon"
+            "glide mode miraidon",
+            "miraidon glide mode"
         ],
         "qualifiers": [
             "glide mode"
