@@ -6825,7 +6825,9 @@
         "image_link": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/778.png",
         "aliases": [
             "disguised mimikyu",
-            "disguised form mimikyu"
+            "disguised form mimikyu",
+            "mimikyu disguised form",
+            "mimikyu disguised"
         ],
         "qualifiers": [
             "disguised form"
@@ -9006,7 +9008,8 @@
         "image_link": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1017.png",
         "aliases": [
             "teal ogerpon",
-            "teal mask ogerpon"
+            "teal mask ogerpon",
+            "ogerpon teal mask"
         ],
         "qualifiers": [
             "teal mask"
@@ -11197,7 +11200,9 @@
         "image_link": "https://archives.bulbagarden.net/media/upload/4/4d/HOME0778B.png",
         "aliases": [
             "busted mimikyu",
-            "busted form mimikyu"
+            "busted form mimikyu",
+            "mimikyu busted form",
+            "mimikyu busted"
         ],
         "qualifiers": [
             "busted form"
