@@ -8,6 +8,7 @@ import json
 import time
 from PIL import Image
 import threading
+from pygame_text_input import InputBox
 
 class CustomThread(threading.Thread):
     # by Biren Mer from https://medium.com/@birenmer/threading-the-needle-returning-values-from-python-threads-with-ease-ace21193c148
@@ -33,11 +34,14 @@ def silhouette(surface):
 
 class GameState:
     def __init__(self, full_list):
+        pygame.init()
         self.pokemon_chosen: bool = False
         self.pokemon_list: list = full_list
         random.shuffle(self.pokemon_list)
         self.pokemon_guessed: bool = False
-        self.guess: str = ''
+        # self.guess: str = ''
+        self.screen = pygame.display.set_mode((475, 540))
+        self.guess: InputBox = InputBox(self.screen, 5, 480, 'Comic Mono', 24, pygame.Color(0, 0, 0))
         self.index: int = -1
         self.game_start: float = time.time()
         self.adjusted_game_start: float = 0
@@ -79,8 +83,8 @@ class Pokemon:
             self.img = pygame.transform.scale(self.img, (475, 475))
         self.shadow_img = silhouette(self.img)
 
-    def guess(self, guess: str, require_qualifiers: bool = False) -> bool:
-        guessed_name = "".join(char for char in guess.lower() if char.isalnum())
+    def guess(self, guess_input: str, require_qualifiers: bool = False) -> bool:
+        guessed_name = "".join(char for char in guess_input.lower() if char.isalnum())
         if require_qualifiers:
             for qualifier in self.qualifiers:
                 if qualifier not in guessed_name:
@@ -143,7 +147,7 @@ def check_commands(state: GameState, pokemon_data: dict, full_pokemon_list: list
                     "mewtwo", "tentacruel", "aerodactyl",
                     "omanyte", "slowpoke",
                     "pidgeot", "arbok"]
-    match state.guess.upper():
+    match str(state.guess).upper():
         case "POKERAP":
             print("switching to pokerap mode")
             state.reset(pokerap_list, False)
@@ -153,11 +157,11 @@ def check_commands(state: GameState, pokemon_data: dict, full_pokemon_list: list
         case "SPECIFIC":
             print("enabling specific mode")
             state.specific_mode = True
-            state.guess = ""
+            state.guess.reset()
         case "NOSPECIFIC":
             print("disabling specific mode")
             state.specific_mode = False
-            state.guess = ""
+            state.guess.reset()
         case "ONLYSPECIFIC":
             print("Switching to only pokemon affected by specific mode.")
             # state.specific_mode = True
@@ -256,16 +260,14 @@ def main():
 
     print("Updates complete!\nNote that skips, aliases, and qualifiers must be added manually and will not be covered by the automatic update.")
 
-    pygame.init()
+    state: GameState = GameState(full_pokemon_list)
+
     clock = pygame.time.Clock()
-    screen = pygame.display.set_mode((475, 540))
     pygame.display.set_caption("Who's That Pokémon?")
 
-    font_big = pygame.font.SysFont("Comic Mono", 24)
     font_small = pygame.font.SysFont("Comic Mono", 18)
     bg_color = pygame.Color(42, 117, 187)
 
-    state: GameState = GameState(full_pokemon_list)
     load_start_time = 0
     backspace_held_for = 0
 
@@ -283,7 +285,7 @@ def main():
                 if event.key == pygame.K_RETURN:
                     #commands
                     check_commands(state, pokemon_data, full_pokemon_list)
-                    if "FAST" in state.guess.upper():
+                    if "FAST" in str(state.guess).upper():
                         # multithreading so im putting it in here so it dont break
                         match state.guess.upper():
                             case "FASTMODE":
@@ -296,31 +298,12 @@ def main():
                                 next_pkmn_thread.join()
                                 state.fast_mode = False
                                 print("Fast Mode Disabled.")
-                    state.guess = ''
-                elif event.key != pygame.K_BACKSPACE:
-                    state.guess += event.unicode
+                    state.guess.reset
+                state.guess.track_key_presses(event)
 
-                state.pokemon_guessed = pokemon.guess(state.guess, state.specific_mode)
+                state.pokemon_guessed = pokemon.guess(str(state.guess), state.specific_mode)
 
-        keys_down = pygame.key.get_pressed()
-        if keys_down[pygame.K_BACKSPACE]:
-            if (backspace_held_for == 0 or backspace_held_for >= 15):
-                if keys_down[pygame.K_LCTRL] or keys_down[pygame.K_RCTRL]:
-                    last_index = 0
-                    for index, letter in reversed(list(enumerate(state.guess))):
-                        if index == len(state.guess) - 1:
-                            continue
-                        if not letter.isalnum():
-                            last_index = index
-                            break
-                    state.guess = state.guess[:last_index + (1 if last_index != 0 else 0)]
-                elif keys_down[pygame.K_LALT] or keys_down[pygame.K_RALT]:
-                    state.guess = ""
-                else:
-                    state.guess = state.guess[:-1]
-            backspace_held_for += 1
-        else:
-            backspace_held_for = 0
+        state.guess.track_backspaces()
 
         if not state.pokemon_chosen:
             # select the next pokemon
@@ -347,7 +330,7 @@ def main():
                 pokemon = Pokemon(state.pokemon_list[state.index], pokemon_data)
             state.pokemon_chosen = True
             state.pokemon_guessed = False
-            state.guess = ''
+            state.guess.reset()
             number_guessed_str = f"{state.index} / {len(state.pokemon_list)}"
             guess_start = time.time()
             if state.adjusted_game_start == 0:
@@ -355,22 +338,21 @@ def main():
             else:
                 state.adjusted_game_start += (time.time() - load_start_time)
 
-        guess_surface = font_big.render(state.guess, True, pygame.Color(0, 0, 0))
         now = time.time()
         guess_num_surface = font_small.render(f"{number_guessed_str} {now - guess_start:.2f} RTA: {now - state.game_start:.2f} IGT: {now - state.adjusted_game_start:.2f}", True, pygame.Color(0, 0, 0))
         
-        screen.fill(bg_color)
+        state.screen.fill(bg_color)
         if not state.pokemon_guessed:
-            screen.blit(pokemon.shadow_img, (0, 0))
+            state.screen.blit(pokemon.shadow_img, (0, 0))
         else:
             state.pokemon_chosen = False
             if not state.fast_mode:
-                screen.blit(pokemon.img, (0, 0))
+                state.screen.blit(pokemon.img, (0, 0))
             else:
-                screen.blit(pokemon.shadow_img, (0, 0))
+                state.screen.blit(pokemon.shadow_img, (0, 0))
             load_start_time = time.time()
-        screen.blit(guess_surface, (5, 480))
-        screen.blit(guess_num_surface, (5, 510))
+        state.guess.render()
+        state.screen.blit(guess_num_surface, (5, 510))
         pygame.display.update()
         clock.tick(30)
 
